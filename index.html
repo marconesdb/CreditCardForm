@@ -17,6 +17,35 @@
             margin: 0;
         }
 
+        @media (min-width: 1640px) {
+            body {
+                background-size: 700px auto; /* Define a largura como 2000px e ajusta a altura automaticamente */
+                
+            }
+            
+
+        }
+
+        .card-logo {
+            position: absolute;
+            top: 80px;
+            left: 230px;
+            width: 80px;
+            height: 48px;
+        }
+        
+        @media (min-width: 1640px) {
+            .card-logo {
+                position: absolute;
+                top: 185px;
+                left: 420px;
+                width: 80px;
+                height: 48px;
+            }
+        }
+        
+        
+        
         input:focus {
             background: linear-gradient(white, white) padding-box,
                        linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
@@ -34,7 +63,8 @@
   
     <!-- Contêiner das imagens à esquerda -->
     <div class="flex flex-col items-center justify-start space-y-10  md:mb-0">
-        <img src="./images/bg-card-front.png" alt="Imagem 1" class="mr-[200px] ">
+        <img src="./images/bg-card-front.png" alt="Frente do Cartão" class="mr-[200px] ">
+        <img src="./images/card-logo.svg" alt="Ícone no canto" class="card-logo">
         <img src="./images/bg-card-back.png" alt="Imagem 2" class="mr-[75px] ">
     </div>
 
