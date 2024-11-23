@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-image: url('/images/bg-main-desktop.png'); /* URL da imagem */
+            background-repeat: no-repeat;
+            background-position: left center; /* Alinha a imagem à esquerda */
+            background-size: auto; /* Ajusta o tamanho conforme a imagem */
+            margin: 0;
+        }
+
+        input:focus {
+            background: linear-gradient(white, white) padding-box,
+                       linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
+            border: 1px solid transparent;
+            outline: none;
+        }
+
+        .error-input {
+            border-color: hsl(0, 100%, 66%) !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white flex items-center justify-center">
+
+  
+    <!-- Contêiner das imagens à esquerda -->
+    <div class="flex flex-col items-center justify-start space-y-10  md:mb-0">
+        <img src="/images/bg-card-front.png" alt="Imagem 1" class="mr-[200px] ">
+        <img src="/images/bg-card-back.png" alt="Imagem 2" class="mr-[75px] ">
+    </div>
+
+
+    <!-- Formulário posicionado 200px à direita -->
+    <form id="creditCardForm" class="w-full max-w-md p-8 ml-[50px]">
+        <div class="space-y-4">
+            <!-- Nome do Titular -->
+            <div>
+                <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
+                    CARDHOLDER NAME
+                </label>
+                <input
+                    type="text"
+                    id="cardholderName"
+                    placeholder="e.g. Jane Appleseed"
+                    class="w-full px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
+                />
+                <p id="nameError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">Nome inválido</p>
+            </div>
+
+            <!-- Número do Cartão -->
+            <div>
+                <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
+                    CARD NUMBER
+                </label>
+                <input
+                    type="text"
+                    id="cardNumber"
+                    placeholder="e.g. 1234 5678 9123 0000"
+                    maxlength="19"
+                    class="w-full px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
+                />
+                <p id="numberError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">Número do cartão inválido</p>
+            </div>
+
+            <!-- Data de Expiração e CVC -->
+            <div class="flex gap-4">
+                <div class="flex-1">
+                    <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
+                        EXP. DATE (MM/YY)
+                    </label>
+                    <div class="flex gap-2">
+                        <input
+                            type="text"
+                            id="expMonth"
+                            placeholder="MM"
+                            maxlength="2"
+                            class="w-20 px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
+                        />
+                        <input
+                            type="text"
+                            id="expYear"
+                            placeholder="YY"
+                            maxlength="2"
+                            class="w-20 px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
+                        />
+                    </div>
+                    <p id="dateError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">Data inválida</p>
+                </div>
+
+                <div class="w-1/3">
+                    <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
+                        CVC
+                    </label>
+                    <input
+                        type="text"
+                        id="cvc"
+                        placeholder="e.g. 123"
+                        maxlength="3"
+                        class="w-full px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
+                    />
+                    <p id="cvcError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">CVC inválido</p>
+                </div>
+            </div>
+
+            <!-- Botão de Confirmação -->
+            <button
+                type="submit"
+                class="w-full py-3 px-6 bg-[hsl(278,68%,11%)] text-white rounded-lg 
+                       hover:bg-opacity-90 transition-colors duration-200 text-lg"
+            >
+                Confirm
+            </button>
+        </div>
+    </form>
+
+    <script>
+        // Validações de formulário (inalteradas)
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('creditCardForm');
+            const cardNumber = document.getElementById('cardNumber');
+            const cardholderName = document.getElementById('cardholderName');
+            const expMonth = document.getElementById('expMonth');
+            const expYear = document.getElementById('expYear');
+            const cvc = document.getElementById('cvc');
+
+            cardNumber.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{4})/g, '$1 ').trim();
+                e.target.value = value;
+            });
+
+            [cardNumber, expMonth, expYear, cvc].forEach(input => {
+                input.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/[^\d\s]/g, '');
+                });
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+
+                if (!cardholderName.value.trim()) {
+                    showError(cardholderName, 'nameError', 'Nome é obrigatório');
+                    isValid = false;
+                } else {
+                    hideError(cardholderName, 'nameError');
+                }
+
+                const cardNumberValue = cardNumber.value.replace(/\s/g, '');
+                if (!cardNumberValue || cardNumberValue.length !== 16) {
+                    showError(cardNumber, 'numberError', 'Número do cartão inválido');
+                    isValid = false;
+                } else {
+                    hideError(cardNumber, 'numberError');
+                }
+
+                const month = parseInt(expMonth.value);
+                const year = parseInt(expYear.value);
+                if (!month || month < 1 || month > 12 || !expMonth.value.match(/^\d{2}$/)) {
+                    showError(expMonth, 'dateError', 'Mês inválido');
+                    isValid = false;
+                } else if (!year || !expYear.value.match(/^\d{2}$/)) {
+                    showError(expYear, 'dateError', 'Ano inválido');
+                    isValid = false;
+                } else {
+                    hideError(expMonth, 'dateError');
+                    hideError(expYear, 'dateError');
+                }
+
+                if (!cvc.value.match(/^\d{3}$/)) {
+                    showError(cvc, 'cvcError', 'CVC inválido');
+                    isValid = false;
+                } else {
+                    hideError(cvc, 'cvcError');
+                }
+
+                if (isValid) {
+                    console.log('Form submitted successfully');
+                }
+            });
+
+            function showError(input, errorId, message) {
+                const errorElement = document.getElementById(errorId);
+                errorElement.textContent = message;
+                errorElement.classList.remove('hidden');
+                input.classList.add('error-input');
+            }
+
+            function hideError(input, errorId) {
+                const errorElement = document.getElementById(errorId);
+                errorElement.classList.add('hidden');
+                input.classList.remove('error-input');
+            }
+        });
+    </script>
+</body>
+</html>
