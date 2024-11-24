@@ -148,21 +148,72 @@
       height: 100vh;
     }
 
-    .card-front {
+    .card-front-container {
+      position: relative;
       margin-left: -350px;
+    }
+
+    .card-back-container {
+      position: relative;
+      margin-right: 180px;
+      margin-top: 30px;
+    }
+
+    .card-front {
       position: relative;
       z-index: 1;
     }
 
     .card-back {
-      margin-right: 180px;
-      margin-top: 30px;
+      position: relative;
     }
 
     .card-logo {
       position: absolute;
-      top: 120px;
-      left: 200px;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+    }
+
+    /* Estilos para as informações do cartão */
+    .card-number-display {
+      position: absolute;
+      bottom: 100px;
+      left: 30px;
+      color: var(--white);
+      font-size: 24px;
+      letter-spacing: 2px;
+      z-index: 2;
+    }
+
+    .card-name-display {
+      position: absolute;
+      bottom: 40px;
+      left: 30px;
+      color: var(--white);
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+
+    .card-expiry-display {
+      position: absolute;
+      bottom: 40px;
+      right: 30px;
+      color: var(--white);
+      font-size: 14px;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+
+    .card-cvc-display {
+      position: absolute;
+      top: 110px;
+      right: 60px;
+      color: var(--white);
+      font-size: 14px;
+      letter-spacing: 1px;
       z-index: 2;
     }
 
@@ -230,9 +281,18 @@
 </head>
 <body>
   <div class="card-container">
-    <img src="./images/bg-card-front.png" alt="Frente do Cartão" class="card-front">
-    <img src="./images/card-logo.svg" alt="Ícone no canto" class="card-logo">
-    <img src="./images/bg-card-back.png" alt="Imagem 2" class="card-back">
+    <div class="card-front-container">
+      <img src="./images/bg-card-front.png" alt="Frente do Cartão" class="card-front">
+      <img src="./images/card-logo.svg" alt="Ícone no canto" class="card-logo">
+      <div class="card-number-display" id="cardNumberDisplay">0000 0000 0000 0000</div>
+      <div class="card-name-display" id="cardNameDisplay">Jane Appleseed</div>
+      <div class="card-expiry-display" id="cardExpiryDisplay">00/00</div>
+    </div>
+    
+    <div class="card-back-container">
+      <img src="./images/bg-card-back.png" alt="Verso do Cartão" class="card-back">
+      <div class="card-cvc-display" id="cardCvcDisplay">000</div>
+    </div>
   </div>
 
   <div class="form-container" id="formSection">
@@ -320,6 +380,12 @@
       const expYear = document.getElementById('expYear');
       const cvc = document.getElementById('cvc');
 
+      // Elementos de exibição do cartão
+      const cardNumberDisplay = document.getElementById('cardNumberDisplay');
+      const cardNameDisplay = document.getElementById('cardNameDisplay');
+      const cardExpiryDisplay = document.getElementById('cardExpiryDisplay');
+      const cardCvcDisplay = document.getElementById('cardCvcDisplay');
+
       // Formatação do número do cartão
       cardNumber.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
@@ -327,7 +393,13 @@
           value = value.match(/.{1,4}/g).join(' ');
         }
         e.target.value = value;
+        cardNumberDisplay.textContent = value || '0000 0000 0000 0000';
         validateCardNumber();
+      });
+
+      // Atualização em tempo real do nome
+      cardName.addEventListener('input', function(e) {
+        cardNameDisplay.textContent = e.target.value || 'Jane Appleseed';
       });
 
       // Limitar quantidade de dígitos para mês e ano
@@ -335,19 +407,29 @@
         if (e.target.value.length > 2) {
           e.target.value = e.target.value.slice(0, 2);
         }
+        updateExpiry();
       });
 
       expYear.addEventListener('input', function(e) {
         if (e.target.value.length > 2) {
           e.target.value = e.target.value.slice(0, 2);
         }
+        updateExpiry();
       });
 
-      // Limitar quantidade de dígitos para CVC
+      // Atualização em tempo real da data de expiração
+      function updateExpiry() {
+        const month = expMonth.value.padStart(2, '0');
+        const year = expYear.value.padStart(2, '0');
+        cardExpiryDisplay.textContent = `${month}/${year}`;
+      }
+
+      // Limitar quantidade de dígitos para CVC e atualizar display
       cvc.addEventListener('input', function(e) {
         if (e.target.value.length > 3) {
           e.target.value = e.target.value.slice(0, 3);
         }
+        cardCvcDisplay.textContent = e.target.value || '000';
       });
 
       function validateCardNumber() {
@@ -457,6 +539,11 @@
       // Função para resetar o formulário
       window.resetForm = function() {
         form.reset();
+        cardNumberDisplay.textContent = '0000 0000 0000 0000';
+        cardNameDisplay.textContent = 'Jane Appleseed';
+        cardExpiryDisplay.textContent = '00/00';
+        cardCvcDisplay.textContent = '000';
+        
         const inputs = form.querySelectorAll('input');
         inputs.forEach(input => input.classList.remove('error'));
         const errors = form.querySelectorAll('.error-message');
