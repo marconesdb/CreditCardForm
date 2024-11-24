@@ -1,236 +1,470 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credit Card Form</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-image: url('./images/bg-main-desktop.png'); /* URL da imagem */
-            background-repeat: no-repeat;
-            background-position: left center; /* Alinha a imagem à esquerda */
-            background-size: auto; /* Ajusta o tamanho conforme a imagem */
-            margin: 0;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Primary Colors */
+      --gradient-start: hsl(249, 99%, 64%);
+      --gradient-end: hsl(278, 94%, 30%);
+      --red: hsl(0, 100%, 66%);
+      
+      /* Neutral Colors */
+      --white: hsl(0, 0%, 100%);
+      --light-grayish-violet: hsl(270, 3%, 87%);
+      --dark-grayish-violet: hsl(279, 6%, 55%);
+      --very-dark-violet: hsl(278, 68%, 11%);
+    }
 
-        @media (min-width: 1640px) {
-            body {
-                background-size: 700px auto; /* Define a largura como 2000px e ajusta a altura automaticamente */
-                
-            }
-            
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+    }
 
-        }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: var(--white);
+      font-size: 18px;
+      background-image: url('./images/bg-main-desktop.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: auto;
+      margin: 0;
+    }
 
-        .card-logo {
-            position: absolute;
-            top: 80px;
-            left: 230px;
-            width: 80px;
-            height: 48px;
-        }
-        
-        @media (min-width: 1640px) {
-            .card-logo {
-                position: absolute;
-                top: 185px;
-                left: 420px;
-                width: 80px;
-                height: 48px;
-            }
-        }
-        
-        
-        
-        input:focus {
-            background: linear-gradient(white, white) padding-box,
-                       linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
-            border: 1px solid transparent;
-            outline: none;
-        }
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
 
-        .error-input {
-            border-color: hsl(0, 100%, 66%) !important;
-        }
-    </style>
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--very-dark-violet);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--light-grayish-violet);
+      border-radius: 6px;
+      font-size: 18px;
+      color: var(--very-dark-violet);
+      background-color: var(--white);
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: transparent;
+      background-image: linear-gradient(var(--white), var(--white)), 
+                       linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+
+    input::placeholder {
+      color: var(--dark-grayish-violet);
+    }
+
+    .expiry-cvc {
+      display: flex;
+      gap: 20px;
+    }
+
+    .expiry-date {
+      display: flex;
+      gap: 10px;
+    }
+
+    .expiry-input {
+      width: 70px;
+    }
+
+    .cvc-input {
+      width: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: var(--very-dark-violet);
+      color: var(--white);
+      font-size: 18px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .error {
+      border-color: var(--red) !important;
+    }
+
+    .error-message {
+      color: var(--red);
+      font-size: 12px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    input.error::placeholder {
+      color: var(--red);
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card-front {
+      margin-left: -350px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-back {
+      margin-right: 180px;
+      margin-top: 30px;
+    }
+
+    .card-logo {
+      position: absolute;
+      top: 120px;
+      left: 200px;
+      z-index: 2;
+    }
+
+    .success-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background-color: hsl(249, 99%, 64%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .success-icon::after {
+      content: "✓";
+      color: white;
+      font-size: 40px;
+    }
+
+    .success-title {
+      font-size: 28px;
+      color: var(--very-dark-violet);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .success-message {
+      color: var(--dark-grayish-violet);
+      margin-bottom: 48px;
+    }
+
+    .continue-button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: var(--very-dark-violet);
+      color: var(--white);
+      font-size: 18px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .continue-button:hover {
+      opacity: 0.9;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-white flex items-center justify-center">
+<body>
+  <div class="card-container">
+    <img src="./images/bg-card-front.png" alt="Frente do Cartão" class="card-front">
+    <img src="./images/card-logo.svg" alt="Ícone no canto" class="card-logo">
+    <img src="./images/bg-card-back.png" alt="Imagem 2" class="card-back">
+  </div>
 
-  
-    <!-- Contêiner das imagens à esquerda -->
-    <div class="flex flex-col items-center justify-start space-y-10  md:mb-0">
-        <img src="./images/bg-card-front.png" alt="Frente do Cartão" class="mr-[200px] ">
-        <img src="./images/card-logo.svg" alt="Ícone no canto" class="card-logo">
-        <img src="./images/bg-card-back.png" alt="Imagem 2" class="mr-[75px] ">
-    </div>
+  <div class="form-container" id="formSection">
+    <form id="creditCardForm">
+      <div class="form-group">
+        <label for="cardName">Cardholder Name</label>
+        <input 
+          type="text" 
+          id="cardName" 
+          placeholder="e.g. Jane Appleseed"
+          required
+        >
+        <div class="error-message" id="nameError">Can't be blank</div>
+      </div>
 
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input 
+          type="text" 
+          id="cardNumber" 
+          placeholder="e.g. 1234 5678 9123 0000"
+          maxlength="19"
+          required
+        >
+        <div class="error-message" id="numberError">Invalid card code</div>
+      </div>
 
-    <!-- Formulário posicionado 200px à direita -->
-    <form id="creditCardForm" class="w-full max-w-md p-8 ml-[50px]">
-        <div class="space-y-4">
-            <!-- Nome do Titular -->
-            <div>
-                <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
-                    CARDHOLDER NAME
-                </label>
-                <input
-                    type="text"
-                    id="cardholderName"
-                    placeholder="e.g. Jane Appleseed"
-                    class="w-full px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
-                />
-                <p id="nameError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">Nome inválido</p>
-            </div>
-
-            <!-- Número do Cartão -->
-            <div>
-                <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
-                    CARD NUMBER
-                </label>
-                <input
-                    type="text"
-                    id="cardNumber"
-                    placeholder="e.g. 1234 5678 9123 0000"
-                    maxlength="19"
-                    class="w-full px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
-                />
-                <p id="numberError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">Número do cartão inválido</p>
-            </div>
-
-            <!-- Data de Expiração e CVC -->
-            <div class="flex gap-4">
-                <div class="flex-1">
-                    <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
-                        EXP. DATE (MM/YY)
-                    </label>
-                    <div class="flex gap-2">
-                        <input
-                            type="text"
-                            id="expMonth"
-                            placeholder="MM"
-                            maxlength="2"
-                            class="w-20 px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
-                        />
-                        <input
-                            type="text"
-                            id="expYear"
-                            placeholder="YY"
-                            maxlength="2"
-                            class="w-20 px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
-                        />
-                    </div>
-                    <p id="dateError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">Data inválida</p>
-                </div>
-
-                <div class="w-1/3">
-                    <label class="block text-sm font-medium text-[hsl(278,68%,11%)] mb-1">
-                        CVC
-                    </label>
-                    <input
-                        type="text"
-                        id="cvc"
-                        placeholder="e.g. 123"
-                        maxlength="3"
-                        class="w-full px-4 py-2 border border-[hsl(270,3%,87%)] rounded-lg text-lg"
-                    />
-                    <p id="cvcError" class="mt-1 text-sm text-[hsl(0,100%,66%)] hidden">CVC inválido</p>
-                </div>
-            </div>
-
-            <!-- Botão de Confirmação -->
-            <button
-                type="submit"
-                class="w-full py-3 px-6 bg-[hsl(278,68%,11%)] text-white rounded-lg 
-                       hover:bg-opacity-90 transition-colors duration-200 text-lg"
+      <div class="form-group expiry-cvc">
+        <div>
+          <label>Exp. Date (MM/YY)</label>
+          <div class="expiry-date">
+            <input 
+              type="number" 
+              id="expMonth" 
+              class="expiry-input"
+              placeholder="MM"
+              maxlength="2"
+              required
             >
-                Confirm
-            </button>
+            <input 
+              type="number" 
+              id="expYear" 
+              class="expiry-input"
+              placeholder="YY"
+              maxlength="2"
+              required
+            >
+          </div>
+          <div class="error-message" id="dateError">Can't be blank</div>
         </div>
+
+        <div>
+          <label for="cvc">CVC</label>
+          <input 
+            type="number" 
+            id="cvc" 
+            class="cvc-input"
+            placeholder="e.g. 123"
+            maxlength="3"
+            required
+          >
+          <div class="error-message" id="cvcError">Can't be blank</div>
+        </div>
+      </div>
+
+      <button type="submit">Confirm</button>
     </form>
+  </div>
 
-    <script>
-        // Validações de formulário (inalteradas)
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('creditCardForm');
-            const cardNumber = document.getElementById('cardNumber');
-            const cardholderName = document.getElementById('cardholderName');
-            const expMonth = document.getElementById('expMonth');
-            const expYear = document.getElementById('expYear');
-            const cvc = document.getElementById('cvc');
+  <div class="success-container" id="successSection">
+    <div class="success-icon"></div>
+    <h2 class="success-title">Thank you!</h2>
+    <p class="success-message">We've added your card details</p>
+    <button class="continue-button" onclick="resetForm()">Continue</button>
+  </div>
 
-            cardNumber.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                value = value.replace(/(\d{4})/g, '$1 ').trim();
-                e.target.value = value;
-            });
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('creditCardForm');
+      const formSection = document.getElementById('formSection');
+      const successSection = document.getElementById('successSection');
+      const cardName = document.getElementById('cardName');
+      const cardNumber = document.getElementById('cardNumber');
+      const expMonth = document.getElementById('expMonth');
+      const expYear = document.getElementById('expYear');
+      const cvc = document.getElementById('cvc');
 
-            [cardNumber, expMonth, expYear, cvc].forEach(input => {
-                input.addEventListener('input', function(e) {
-                    e.target.value = e.target.value.replace(/[^\d\s]/g, '');
-                });
-            });
+      // Formatação do número do cartão
+      cardNumber.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+          value = value.match(/.{1,4}/g).join(' ');
+        }
+        e.target.value = value;
+        validateCardNumber();
+      });
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                let isValid = true;
+      // Limitar quantidade de dígitos para mês e ano
+      expMonth.addEventListener('input', function(e) {
+        if (e.target.value.length > 2) {
+          e.target.value = e.target.value.slice(0, 2);
+        }
+      });
 
-                if (!cardholderName.value.trim()) {
-                    showError(cardholderName, 'nameError', 'Nome é obrigatório');
-                    isValid = false;
-                } else {
-                    hideError(cardholderName, 'nameError');
-                }
+      expYear.addEventListener('input', function(e) {
+        if (e.target.value.length > 2) {
+          e.target.value = e.target.value.slice(0, 2);
+        }
+      });
 
-                const cardNumberValue = cardNumber.value.replace(/\s/g, '');
-                if (!cardNumberValue || cardNumberValue.length !== 16) {
-                    showError(cardNumber, 'numberError', 'Número do cartão inválido');
-                    isValid = false;
-                } else {
-                    hideError(cardNumber, 'numberError');
-                }
+      // Limitar quantidade de dígitos para CVC
+      cvc.addEventListener('input', function(e) {
+        if (e.target.value.length > 3) {
+          e.target.value = e.target.value.slice(0, 3);
+        }
+      });
 
-                const month = parseInt(expMonth.value);
-                const year = parseInt(expYear.value);
-                if (!month || month < 1 || month > 12 || !expMonth.value.match(/^\d{2}$/)) {
-                    showError(expMonth, 'dateError', 'Mês inválido');
-                    isValid = false;
-                } else if (!year || !expYear.value.match(/^\d{2}$/)) {
-                    showError(expYear, 'dateError', 'Ano inválido');
-                    isValid = false;
-                } else {
-                    hideError(expMonth, 'dateError');
-                    hideError(expYear, 'dateError');
-                }
+      function validateCardNumber() {
+        const value = cardNumber.value.replace(/\s/g, '');
+        const isValid = /^\d{16}$/.test(value);
+        
+        if (!value) {
+          showError(cardNumber, 'numberError', "Can't be blank");
+          return false;
+        } else if (!isValid) {
+          showError(cardNumber, 'numberError', 'Invalid card code');
+          return false;
+        }
+        hideError(cardNumber, 'numberError');
+        return true;
+      }
 
-                if (!cvc.value.match(/^\d{3}$/)) {
-                    showError(cvc, 'cvcError', 'CVC inválido');
-                    isValid = false;
-                } else {
-                    hideError(cvc, 'cvcError');
-                }
+      function validateName() {
+        if (!cardName.value.trim()) {
+          showError(cardName, 'nameError', "Can't be blank");
+          return false;
+        }
+        hideError(cardName, 'nameError');
+        return true;
+      }
 
-                if (isValid) {
-                    console.log('Form submitted successfully');
-                }
-            });
+      function validateExpiry() {
+        const month = expMonth.value;
+        const year = expYear.value;
+        
+        if (!month || !year) {
+          showError(expMonth, 'dateError', "Can't be blank");
+          expMonth.classList.add('error');
+          expYear.classList.add('error');
+          return false;
+        }
+        
+        const monthNum = parseInt(month);
+        const yearNum = parseInt(year);
+        const currentYear = new Date().getFullYear() % 100;
+        const currentMonth = new Date().getMonth() + 1;
 
-            function showError(input, errorId, message) {
-                const errorElement = document.getElementById(errorId);
-                errorElement.textContent = message;
-                errorElement.classList.remove('hidden');
-                input.classList.add('error-input');
-            }
+        if (monthNum < 1 || monthNum > 12) {
+          showError(expMonth, 'dateError', 'Invalid month');
+          return false;
+        }
 
-            function hideError(input, errorId) {
-                const errorElement = document.getElementById(errorId);
-                errorElement.classList.add('hidden');
-                input.classList.remove('error-input');
-            }
-        });
-    </script>
+        if (yearNum < currentYear || (yearNum === currentYear && monthNum < currentMonth)) {
+          showError(expYear, 'dateError', 'Card expired');
+          return false;
+        }
+
+        hideError(expMonth, 'dateError');
+        expMonth.classList.remove('error');
+        expYear.classList.remove('error');
+        return true;
+      }
+
+      function validateCVC() {
+        const value = cvc.value;
+        if (!value) {
+          showError(cvc, 'cvcError', "Can't be blank");
+          return false;
+        }
+        if (!/^\d{3}$/.test(value)) {
+          showError(cvc, 'cvcError', 'Wrong format');
+          return false;
+        }
+        hideError(cvc, 'cvcError');
+        return true;
+      }
+
+      // Evento de submit do formulário
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const isNameValid = validateName();
+        const isCardNumberValid = validateCardNumber();
+        const isExpiryValid = validateExpiry();
+        const isCVCValid = validateCVC();
+
+        if (isNameValid && isCardNumberValid && isExpiryValid && isCVCValid) {
+          formSection.style.display = 'none';
+          successSection.style.display = 'flex';
+        }
+      });
+
+      // Validação em tempo real
+      cardName.addEventListener('blur', validateName);
+      cardNumber.addEventListener('blur', validateCardNumber);
+      expMonth.addEventListener('blur', validateExpiry);
+      expYear.addEventListener('blur', validateExpiry);
+      cvc.addEventListener('blur', validateCVC);
+
+      function showError(input, errorId, message) {
+        input.classList.add('error');
+        const errorElement = document.getElementById(errorId);
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+      }
+
+      function hideError(input, errorId) {
+        input.classList.remove('error');
+        document.getElementById(errorId).style.display = 'none';
+      }
+
+      // Função para resetar o formulário
+      window.resetForm = function() {
+        form.reset();
+        const inputs = form.querySelectorAll('input');
+        inputs.forEach(input => input.classList.remove('error'));
+        const errors = form.querySelectorAll('.error-message');
+        errors.forEach(error => error.style.display = 'none');
+        successSection.style.display = 'none';
+        formSection.style.display = 'block';
+      };
+    });
+  </script>
 </body>
 </html>
