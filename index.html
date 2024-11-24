@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Ignora o Cache do Navegador -->
+  <link rel="stylesheet" href="style.css?v=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -37,6 +42,8 @@
       background-size: auto;
       margin: 0;
     }
+
+
 
     .form-container {
       width: 100%;
@@ -277,6 +284,73 @@
     .hidden {
       display: none;
     }
+    
+    /* Restante do CSS se mantém igual até a media query */
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+  body {
+    background-image: url('./images/bg-main-mobile.png');
+    background-size: 100% 240px;
+    background-position: top center;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .card-container {
+    height: auto;
+    flex-direction: column-reverse;
+    margin-top: 48px;
+  }
+
+  .card-front-container {
+    position: relative;
+    margin-left: -40px; /* Alterado de -350px para 10px */
+    margin-top: -70px;
+  }
+
+  .card-back-container {
+    margin-right: -40px;
+    align-self: flex-end;
+    margin-top: -40px;
+    
+  }
+
+  .card-front, 
+  .card-back {
+    width: 300px;
+    height: auto;
+  }
+
+  .form-container {
+    margin-top: 90px;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .card-number-display {
+    font-size: 18px;
+    bottom: 50px;
+  }
+
+  .card-name-display,
+  .card-expiry-display {
+    font-size: 12px;
+    bottom: 20px;
+  }
+
+  .card-cvc-display {
+    top: 70px;
+    right: 35px;
+  }
+
+  .card-logo {
+    width: 54px;
+    height: auto;
+    top: 18px;
+    left: 18px;
+  }
+}
   </style>
 </head>
 <body>
