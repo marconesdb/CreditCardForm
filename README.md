@@ -1,13 +1,11 @@
-
-
 ```markdown
-# 🌟 Frontend Mentor - Interactive card details 🌟
+# 🌟 Frontend Mentor - Interactive Card Details 🌟
 
 ![Imagem do Projeto](/design/desktop-design.jpg)
 
 ## 📜 Descrição
 
-Este projeto é uma aplicação web desenvolvida utilizando **HTML**, **CSS** e **JavaScript**. O objetivo é criar uma interface interativa que permita aos usuários inserir dados de cartão de crédito em um formulário para realizar uma compra. 
+Este projeto é uma aplicação web desenvolvida utilizando **HTML**, **CSS** e **JavaScript**. O objetivo é criar uma interface interativa que permita aos usuários inserir dados de cartão de crédito em um formulário para realizar uma compra.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -25,7 +23,7 @@ Para executar este projeto localmente, siga os passos abaixo:
    ```
 2. Navegue até o diretório do projeto:
    ```bash
-   cd seurepositorio
+   cd CreditCardForm
    ```
 3. Abra o arquivo `index.html` em seu navegador.
 
@@ -49,17 +47,17 @@ Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em c
 
 Olá! Eu sou Marcone Silva de Brito, um desenvolvedor web apaixonado por criar experiências incríveis na web. Estou sempre aprendendo novas tecnologias e buscando melhorar minhas habilidades.
 
-![Meu Portifólio](https://layout-novo-portfolio.vercel.app/)
+![Meu Portfólio](https://layout-novo-portfolio.vercel.app/)
 
 ## 🎉 Contribuições
 
 Contribuições são bem-vindas! Se você deseja contribuir para este projeto, por favor, siga estas etapas:
 
 1. Faça um fork do repositório.
-2. Crie uma nova branch (`git checkout -b feature/MinhaNovaFeature`).
+2. Crie uma nova branch (`git checkout -b feature/NovaFeature`).
 3. Faça suas alterações e adicione-as (`git add .`).
 4. Faça um commit das suas alterações (`git commit -m 'Adiciona nova feature'`).
-5. Envie para o repositório remoto (`git push origin feature/MinhaNovaFeature`).
+5. Envie para o repositório remoto (`git push origin feature/NovaFeature`).
 6. Abra um Pull Request.
 
 ## 📄 Licença
