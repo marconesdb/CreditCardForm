@@ -1,7 +1,6 @@
-```markdown
 # 🌟 Frontend Mentor - Interactive Card Details 🌟
 
-![Imagem do Projeto](/design/desktop-design.jpg)
+![Imagem do Projeto](./design/desktop-design.jpg "Imagem de demonstração do projeto")
 
 ## 📜 Descrição
 
@@ -20,7 +19,7 @@ Para executar este projeto localmente, siga os passos abaixo:
 1. Clone o repositório:
    ```bash
    git clone https://github.com/marconesdb/CreditCardForm.git
-   ```
+
 2. Navegue até o diretório do projeto:
    ```bash
    cd CreditCardForm
@@ -41,13 +40,13 @@ Para executar este projeto localmente, siga os passos abaixo:
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
 - **Email**: marconebritt@gmail.com
-- **LinkedIn**: [Seu LinkedIn](https://www.linkedin.com/in/marconesb/)
+- **LinkedIn**: [Meu LinkedIn](https://www.linkedin.com/in/marconesb/)
 
 ## 👤 Sobre o Autor
 
 Olá! Eu sou Marcone Silva de Brito, um desenvolvedor web apaixonado por criar experiências incríveis na web. Estou sempre aprendendo novas tecnologias e buscando melhorar minhas habilidades.
 
-![Meu Portfólio](https://layout-novo-portfolio.vercel.app/)
+(https://layout-novo-portfolio.vercel.app/)
 
 ## 🎉 Contribuições
 
