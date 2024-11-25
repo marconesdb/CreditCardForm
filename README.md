@@ -29,6 +29,11 @@ Para executar este projeto localmente, siga os passos abaixo:
 ## 🎨 Demonstração
 
 ![Demonstração do Projeto](/design/complete-state-desktop.jpg)
+![Demonstração do Projeto](/design/active-states.jpg)
+![Demonstração do Projeto](/design/complete-state-mobile.jpg)
+![Demonstração do Projeto](/design/desktop-preview.jpg)
+![Demonstração do Projeto](/design/mobile-design.jpg)
+
 
 ## 📖 Como Usar
 
@@ -46,7 +51,8 @@ Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em c
 
 Olá! Eu sou Marcone Silva de Brito, um desenvolvedor web apaixonado por criar experiências incríveis na web. Estou sempre aprendendo novas tecnologias e buscando melhorar minhas habilidades.
 
-(https://layout-novo-portfolio.vercel.app/)
+- **Portifólio**: [Meu Portifólio](https://layout-novo-portfolio.vercel.app/)
+
 
 ## 🎉 Contribuições
 
