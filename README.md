@@ -1,13 +1,13 @@
-Aqui está um exemplo de um arquivo `README.md` bem estruturado e visualmente atraente para um projeto em HTML, CSS e JavaScript. Este modelo inclui seções sobre o projeto, instruções de instalação, uso, informações sobre o autor e elementos gráficos como emojis e imagens.
+
 
 ```markdown
-# 🌟 Meu Projeto Incrível 🌟
+# 🌟 Frontend Mentor - Interactive card details 🌟
 
-![Imagem do Projeto](link-para-sua-imagem.jpg)
+![Imagem do Projeto](/design/desktop-design.jpg)
 
 ## 📜 Descrição
 
-Este projeto é uma aplicação web desenvolvida utilizando **HTML**, **CSS** e **JavaScript**. O objetivo é criar uma interface interativa que permita aos usuários [descrever brevemente o que o projeto faz]. 
+Este projeto é uma aplicação web desenvolvida utilizando **HTML**, **CSS** e **JavaScript**. O objetivo é criar uma interface interativa que permita aos usuários inserir dados de cartão de crédito em um formulário para realizar uma compra. 
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -21,7 +21,7 @@ Para executar este projeto localmente, siga os passos abaixo:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/seurepositorio.git
+   git clone https://github.com/marconesdb/CreditCardForm.git
    ```
 2. Navegue até o diretório do projeto:
    ```bash
@@ -31,7 +31,7 @@ Para executar este projeto localmente, siga os passos abaixo:
 
 ## 🎨 Demonstração
 
-![Demonstração do Projeto](link-para-sua-imagem-de-demonstração.jpg)
+![Demonstração do Projeto](/design/complete-state-desktop.jpg)
 
 ## 📖 Como Usar
 
@@ -42,14 +42,14 @@ Para executar este projeto localmente, siga os passos abaixo:
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
-- **Email**: seuemail@example.com
-- **LinkedIn**: [Seu LinkedIn](https://www.linkedin.com/in/seuperfil)
+- **Email**: marconebritt@gmail.com
+- **LinkedIn**: [Seu LinkedIn](https://www.linkedin.com/in/marconesb/)
 
 ## 👤 Sobre o Autor
 
-Olá! Eu sou [Seu Nome], um desenvolvedor web apaixonado por criar experiências incríveis na web. Estou sempre aprendendo novas tecnologias e buscando melhorar minhas habilidades.
+Olá! Eu sou Marcone Silva de Brito, um desenvolvedor web apaixonado por criar experiências incríveis na web. Estou sempre aprendendo novas tecnologias e buscando melhorar minhas habilidades.
 
-![Foto do Autor](link-para-sua-foto.jpg)
+![Meu Portifólio](https://layout-novo-portfolio.vercel.app/)
 
 ## 🎉 Contribuições
 
@@ -70,11 +70,3 @@ Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 Agradeço por visitar meu projeto! Espero que você goste! 😊
 ```
-
-### Notas:
-- Substitua `link-para-sua-imagem.jpg`, `link-para-sua-imagem-de-demonstração.jpg`, e `link-para-sua-foto.jpg` pelos links reais das imagens que você deseja usar.
-- Adapte as seções de descrição, contato e sobre o autor conforme necessário para refletir com precisão seu projeto e informações pessoais.
-- Use emojis para tornar o README mais amigável e visualmente atraente.
-
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/4451179/29524e62-6831-40ed-bffb-079d3338f4c0/Projeto.pdf
