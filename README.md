@@ -31,7 +31,6 @@ Para executar este projeto localmente, siga os passos abaixo:
 ![Demonstração do Projeto](/design/complete-state-desktop.jpg)
 ![Demonstração do Projeto](/design/active-states.jpg)
 ![Demonstração do Projeto](/design/complete-state-mobile.jpg)
-![Demonstração do Projeto](/design/desktop-preview.jpg)
 ![Demonstração do Projeto](/design/mobile-design.jpg)
 
 
